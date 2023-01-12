@@ -52,3 +52,9 @@ if [[ $? == 0 ]]; then
         ln -sf linux-kernel/$package ..
     done
 fi
+
+cd ${KERNEL_SRC}
+echo "I: Add Kernel variable to Generated environment file"
+cat << EOF >>${CWD}/kernel-vars
+export KERNEL_RELEASE=$(make kernelrelease)
+EOF
